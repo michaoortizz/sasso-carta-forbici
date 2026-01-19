@@ -1,7 +1,10 @@
 
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     let computerNumber = Math.floor(Math.random()* 3);
-    let computerChoice = 0;
+    let computerChoice = " ";
     switch (computerNumber) {
         case 0:
         computerChoice = "Sasso";
@@ -17,3 +20,34 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+let humanChoice = "";
+
+function getHumanChoice() {
+    
+    humanChoice = prompt("Escribe una opcion. Sasso... Carta... Forbici!");
+
+}
+
+function playGame(){
+
+    function playRound(computerChoice, humanChoice){
+        if (computerChoice === humanChoice) {
+            console.log("È Un Pareggio!");
+        }
+
+        if (humanChoice === "Forbici" && computerChoice === "Carta" ||
+            humanChoice === "Carta" && computerChoice === "Sasso" ||
+            humanChoice === "Sasso" && computerChoice === "Forbici"
+        ) {
+            humanScore++;
+            console.log("Hai Vinto!");
+            
+        }
+
+        else {
+            computerScore++;
+            console.log("Il Computer Vince!");
+        }
+
+    }
+}
