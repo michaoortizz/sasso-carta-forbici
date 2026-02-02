@@ -8,41 +8,38 @@ function getComputerChoice() {
     let computerChoice = " ";
     switch (computerNumber) {
         case 0:
-        computerChoice = "Sasso";
+        computerChoice = "sasso";
         break;
         case 1:
-        computerChoice = "Carta";
+        computerChoice = "carta";
         break;
         case 2:
-        computerChoice = "Forbici";
+        computerChoice = "forbici";
         break;
     }
-
+    
     return computerChoice;
 }
 
-let humanChoice = "";
-
 function getHumanChoice() {
     
-    humanChoice = prompt("Escribe una opcion. Sasso... Carta... Forbici!");
-
+    let humanChoice = prompt("Scrivi un'opzione. Sasso... Carta... Forbici...!").toLowerCase();
+    return humanChoice;
 }
 
 function playGame(){
 
-    function playRound(computerChoice, humanChoice){
-        if (computerChoice === humanChoice) {
-            console.log("È Un Pareggio!");
-        }
+    getHumanChoice();
+    getComputerChoice();
 
-        if (humanChoice === "Forbici" && computerChoice === "Carta" ||
-            humanChoice === "Carta" && computerChoice === "Sasso" ||
-            humanChoice === "Sasso" && computerChoice === "Forbici"
+    function playRound(computerChoice, humanChoice){
+
+        if (humanChoice === "forbici" && computerChoice === "carta" ||
+            humanChoice === "carta" && computerChoice === "sasso" ||
+            humanChoice === "sasso" && computerChoice === "forbici"
         ) {
             humanScore++;
             console.log("Hai Vinto!");
-            roundWinner = ""
             
         }
 
