@@ -23,35 +23,48 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     
-    let humanChoice = prompt("Scrivi un'opzione. Sasso... Carta... Forbici...!").toLowerCase();
+    let humanChoice = prompt("Scrivi un'opzione. Sasso... Carta... Forbici...!");
     return humanChoice;
 }
 
-function playGame(){
 
-    getHumanChoice();
-    getComputerChoice();
+function playRound(computerChoice, humanChoice){
 
-    function playRound(computerChoice, humanChoice){
+    computerChoice = computerChoice.toLowerCase();
+    humanChoice = humanChoice.toLowerCase();
+
+        if (humanChoice === computerChoice) {
+        roundWinner = "Pareggio";
+        console.log("Pareggio!");
+        return;
+        }
 
         if (humanChoice === "forbici" && computerChoice === "carta" ||
             humanChoice === "carta" && computerChoice === "sasso" ||
             humanChoice === "sasso" && computerChoice === "forbici"
         ) {
             humanScore++;
-            console.log("Hai Vinto!");
+            console.log("Hai Vinto! " + humanChoice + " batte la/le " + computerChoice);
+            roundWinner = "Umano";
             
         }
 
         else {
             computerScore++;
-            console.log("Il Computer Vince!");
+            console.log("Il Computer Vince! " + computerChoice + " batte la/le " + humanChoice );
+            roundWinner = "Computer";
         }
 
     }
 
-    playRound();
-}
+    function playGame (){
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+
+        playRound(computerChoice, humanChoice);
+        console.log("Score Umano:", humanScore);
+        console.log("Score Computer:", computerScore);
+    }    
 
 function gameOver(){
     
