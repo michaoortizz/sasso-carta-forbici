@@ -1,6 +1,7 @@
 
 let humanScore = 0;
 let computerScore = 0;
+let roundWinner = " "
 
 function getComputerChoice() {
     let computerNumber = Math.floor(Math.random()* 3);
@@ -41,6 +42,7 @@ function playGame(){
         ) {
             humanScore++;
             console.log("Hai Vinto!");
+            roundWinner = ""
             
         }
 
@@ -50,4 +52,10 @@ function playGame(){
         }
 
     }
+
+    playRound();
+}
+
+function gameOver(){
+    
 }
