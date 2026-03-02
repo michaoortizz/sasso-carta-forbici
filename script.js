@@ -38,7 +38,7 @@ function playRound(computerChoice, humanChoice){
 
         if (humanChoice === computerChoice) {
         roundWinner = "Pareggio";
-        console.log("Pareggio!");
+        console.log("🤝 Pareggio! Entrambi hanno scelto " + humanChoice);
         return;
         }
 
@@ -47,14 +47,14 @@ function playRound(computerChoice, humanChoice){
             humanChoice === "sasso" && computerChoice === "forbici"
         ) {
             humanScore++;
-            console.log("Hai Vinto! " + humanChoice + " batte la/le " + computerChoice);
+            console.log("🤸‍♀️ Hai Vinto! " + humanChoice + " batte " + computerChoice);
             roundWinner = "Umano";
             
         }
 
         else {
             computerScore++;
-            console.log("Il Computer Vince! " + computerChoice + " batte la/le " + humanChoice );
+            console.log("💻 Il Computer Vince! " + computerChoice + " batte " + humanChoice );
             roundWinner = "Computer";
         }
 
@@ -62,14 +62,43 @@ function playRound(computerChoice, humanChoice){
 
 // función de juego completo: llama las otras funciones y debe repetir la partida 5 veces
     function playGame (){
-        const humanChoice = getHumanChoice();
+        alert("Benvenuti a Sasso, Carta & Forbici!");
+        alert("Gioca finché tu o il computer non vincete 5 round!");
+        alert("Cominiciamo :)!");
+
+        console.clear();
+        while (humanScore < 5 && computerScore <5) {
+           const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
 
         playRound(computerChoice, humanChoice);
         console.log("Score Umano:", humanScore);
-        console.log("Score Computer:", computerScore);
+        console.log("Score Computer:", computerScore); 
+        console.log("------------------------");
+        }
+            gameOver();
     }    
 
+    // funcion de terminar juego: mensajes de finalizacin y opcion de volver a jugar
 function gameOver(){
-    
+        let mensajes = ["🎉 Hai vinto la partita! Congratulazioni!", "💀 Hai perso... La prossima volta sarai più fortunato."];
+        if (humanScore > computerScore){
+            console.log(mensajes[0]);
+        } else {
+            console.log(mensajes[1]);
+        }
+
+        let restart = confirm("Vuoi giocare di nuovo?");
+            if(restart){
+                humanScore = 0;
+                computerScore = 0;
+                console.Clear();
+                playGame();
+            } else {
+                console.log("Grazie per aver giocato! Ciao!");
+            }
 }
+
+window.onload = function() {
+    playGame();
+};
